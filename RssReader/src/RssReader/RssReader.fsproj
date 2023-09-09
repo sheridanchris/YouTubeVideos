@@ -1,0 +1,28 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net7.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="Data.fs" />
+    <Compile Include="Program.fs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Migrations/*" CopyToOutputDirectory="Always" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="dbup-postgresql" Version="5.0.8" />
+    <PackageReference Include="FSharp.Data" Version="6.3.0" />
+    <PackageReference Include="Giraffe" Version="6.2.0" />
+    <PackageReference Include="Giraffe.Htmx" Version="1.9.5" />
+    <PackageReference Include="Giraffe.ViewEngine" Version="1.4.0" />
+    <PackageReference Include="Giraffe.ViewEngine.Htmx" Version="1.9.5" />
+    <PackageReference Include="SqlFun" Version="2.4.0" />
+    <PackageReference Include="SqlFun.NpgSql" Version="2.4.0" />
+  </ItemGroup>
+
+</Project>

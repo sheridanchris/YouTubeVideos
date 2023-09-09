@@ -87,7 +87,11 @@ module DataTable =
           _hxTarget "closest tr"
           _hxInclude "closest tr"
         ] [ str "Save" ]
-        button [] [ str "Cancel" ]
+        button [
+          _hxGet $"/infos/{personalInformation.Id}"
+          _hxSwap "outerHTML"
+          _hxTarget "closest tr"
+        ] [ str "Cancel" ]
       ]
     ]
 
@@ -125,11 +129,18 @@ module DataTable =
   let handler: HttpHandler =
     choose [
       route "/infos" >=> GET >=> htmlView (infos |> renderDataTable |> pageTemplate)
+      GET
+      >=> routef "/infos/%i" (fun id ->
+        let currentPersonalInformation = List.tryFind (fun info -> info.Id = id) infos
+
+        match currentPersonalInformation with
+        | None -> RequestErrors.NOT_FOUND "Not found" // this should probably return html.
+        | Some currentPersonalInformation -> currentPersonalInformation |> renderPersonalInformation |> htmlView)
       routef "/infos/edit/%i" (fun id ->
         let currentPersonalInformation = List.tryFind (fun info -> info.Id = id) infos
 
         match currentPersonalInformation with
-        | None -> RequestErrors.NOT_FOUND "Not found"
+        | None -> RequestErrors.NOT_FOUND "Not found" // this should probably return html.
         | Some currentPersonalInformation ->
           choose [
             GET

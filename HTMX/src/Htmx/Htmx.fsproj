@@ -6,6 +6,8 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Include="DataTable.fs" />
+    <Compile Include="ValidatedForm.fs" />
     <Compile Include="Program.fs" />
   </ItemGroup>
 
@@ -14,6 +16,7 @@
     <PackageReference Include="Giraffe.Htmx" Version="1.9.5" />
     <PackageReference Include="Giraffe.ViewEngine" Version="1.4.0" />
     <PackageReference Include="Giraffe.ViewEngine.Htmx" Version="1.9.5" />
+    <PackageReference Include="Validus" Version="4.1.3" />
   </ItemGroup>
 
 </Project>
